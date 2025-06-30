@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Tài Khoản - Shine Store</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="../webshop/style.css">
+</head>
+<body>
+    <nav>
+        <div class="left">
+            <div class="logo">
+                <img src="../webshop/assesets/logoart1.png">
+            </div>
+            <div class="links">
+                <a href="/webshop/index.html">Trang chủ</a>
+                <div class="dropdown">
+                    <a href="#">Sản phẩm <i class='bx bx-chevron-down'></i></a>
+                    <div class="dropdown-content product-dropdown">
+                        <a href="#"><img src="../webshop/assesets/logosanpham.png" alt="Blox Fruit">Blox Fruit</a>
+                        <a href="#"><img src="../webshop/assesets/banana.png" alt="Banana">Banana</a>
+                        <a href="#"><img src="../webshop/assesets/maru.png" alt="Maru">Maru</a>
+                        <a href="#"><img src="../webshop/assesets/w-azure.png" alt="W-azure">W-azure</a>
+                        <a href="#"><img src="../webshop/assesets/luxury.png" alt="Luxury">Luxury</a>
+                        <a href="#"><img src="../webshop/assesets/ro-exec.png" alt="Karampus">Karampus</a>
+                        <a href="#"><img src="../webshop/assesets/spotify.png" alt="Spotify">Spotify</a>
+                        <a href="#"><img src="../webshop/assesets/youtube.png" alt="Youtube">Youtube</a>
+                        <a href="#"><img src="../webshop/assesets/netflix.png" alt="Netflix">Netflix</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">Lịch sử <i class='bx bx-chevron-down'></i></a>
+                    <div class="dropdown-content">
+                        <a href="#">Lịch sử mua account</a>
+                        <a href="#">Lịch sử đơn hàng</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">Nạp tiền <i class='bx bx-chevron-down'></i></a>
+                    <div class="dropdown-content">
+                        <a href="#">Nạp thẻ</a>
+                        <a href="#">Nạp qua TSR</a>
+                        <a href="#">Nạp qua ngân hàng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <a href="#"><i class='bx bx-support'></i><span class="tooltip">Hỗ trợ</span></a>
+            <a href="#"><i class='bx bx-basket'></i><span class="tooltip">Đơn hàng</span></a>
+            <a href="#"><i class='bx bx-user'></i><span class="tooltip">Thông tin cá nhân</span></a>
+        </div>
+    </nav>
+    <div class="dashboard-layout">
+        <div class="sidebar">
+            <div class="sidebar-item active personal-info"><i class='bx bx-user'></i> Thông tin cá nhân</div>
+            <div class="sidebar-item change-password"><i class='bx bx-key'></i> Thay đổi mật khẩu</div>
+            <div class="sidebar-item logout" onclick="handleLogout()"><i class='bx bx-log-out'></i> Đăng Xuất</div>
+        </div>
+        <div class="dashboard-content">
+            <div class="tab-content personal-info-content">
+                <div class="user-info">
+                    <span class="user-name"></span>
+                    <span class="user-balance"></span>
+                </div>
+                <form class="user-update-form" style="margin-bottom: 18px; display: flex; gap: 12px; align-items: center;">
+                    <input type="number" min="0" placeholder="Số dư mới" class="input-balance" style="width:110px;">
+                    <input type="number" min="0" placeholder="Số đơn mới" class="input-orders" style="width:90px;">
+                    <input type="number" min="0" placeholder="Tiền đã nạp" class="input-deposit" style="width:110px;">
+                    <input type="number" min="0" placeholder="Số account" class="input-accounts" style="width:90px;">
+                    <button type="submit" style="padding: 6px 18px; border-radius: 8px; background: #1e90ff; color: #fff; border: none; font-weight: bold;">Cập nhật</button>
+                </form>
+                <div class="dashboard-summary">
+                    <div class="summary-card">
+                        <i class="bx bx-credit-card"></i>
+                        <div>
+                            <div class="summary-value">7.500đ</div>
+                            <div class="summary-label">Số dư hiện tại</div>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <i class="bx bx-briefcase"></i>
+                        <div>
+                            <div class="summary-value">0 đơn</div>
+                            <div class="summary-label">Số đơn hàng đã đặt</div>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <i class="bx bx-bar-chart"></i>
+                        <div>
+                            <div class="summary-value">0đ</div>
+                            <div class="summary-label">Số tiền đã nạp tuần này</div>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <i class="bx bx-purchase-tag"></i>
+                        <div>
+                            <div class="summary-value">2 acc</div>
+                            <div class="summary-label">Số account đã mua</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-row">
+                    <div class="dashboard-card giao-dich-24h">
+                        <div class="dashboard-card-title">Giao dịch của bạn 24h qua</div>
+                        <div class="dashboard-trans-list">
+                        </div>
+                    </div>
+                    <div class="dashboard-card balance-main-card bien-dong-ngang">
+                        <div class="dashboard-card-title">Biến động số dư</div>
+                        <div class="balance-filters">
+                            <input type="text" placeholder="Lý do">
+                            <input type="date" placeholder="Chọn thời gian cần tìm">
+                            <button>Tìm kiếm</button>
+                            <button>Bộ lọc</button>
+                        </div>
+                        <div class="dashboard-balance-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content change-password-content" style="display:none">
+                <div class="dashboard-card" style="max-width:500px;margin:auto;">
+                    <div class="dashboard-card-title">Thay đổi mật khẩu</div>
+                    <form class="change-password-form" style="display:flex;flex-direction:column;gap:18px;">
+                        <input type="password" placeholder="Mật khẩu hiện tại *" required>
+                        <input type="password" placeholder="Mật khẩu mới" required>
+                        <input type="password" placeholder="Nhập lại mật khẩu mới" required>
+                        <button type="submit" style="padding: 10px 0; border-radius: 8px; background: #1e90ff; color: #fff; border: none; font-weight: bold;">Xác nhận đổi mật khẩu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html> 
